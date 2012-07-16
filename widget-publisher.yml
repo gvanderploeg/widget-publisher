@@ -1,0 +1,16 @@
+http:
+  port: 8081
+
+feeds:
+  -
+   name: edukapp-twitter
+   uri: http://widgets.open.ac.uk:8080/api/tag/952/widgets
+  -
+   name: edukapp-visualization
+   uri: http://widgets.open.ac.uk:8080/api/tag/954/widgets
+
+
+logging:
+  level: DEBUG
+  loggers:
+    "org.surfnet": DEBUG
