@@ -1,17 +1,9 @@
-package org.surfnet.widgets.edukapp.model;
-
-import javax.xml.bind.annotation.XmlRootElement;
+package org.surfnet.widgets.edukapp;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.surfnet.widgets.model.Widget;
 
-@XmlRootElement
 public class EdukappWidget extends Widget {
-  @JsonProperty
-  private String name;
-
-  @JsonProperty
-  private String description;
 
   @JsonProperty
   private String type;
@@ -26,8 +18,4 @@ public class EdukappWidget extends Widget {
   @JsonProperty
   private String[] activities;
 
-  @Override
-  public String getTitle() {
-    return name;
-  }
 }
