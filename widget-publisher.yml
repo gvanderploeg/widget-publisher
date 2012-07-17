@@ -3,13 +3,9 @@ http:
 
 feeds:
   -
-    name: local-static
+    name: edukapp
     type: edukapp-rest-json
-    uri: http://edukapp/widgets.php
-  -
-    name: local-edukapp
-    type: edukapp-rest-json
-    uri: http://localhost:8080/api/search?q=[*TO%20*]&resultsize=100000
+    uri: http://widgets.open.ac.uk:8080/api/search?q=[*TO%20*]&resultsize=10
 
 logging:
   level: info

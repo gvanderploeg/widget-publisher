@@ -36,7 +36,7 @@ public class WidgetResource {
     final List<Widget> feed = new ArrayList<Widget>();
 
     for (FeedService<?> fs : feedServices.values()) {
-      feed.addAll(fs.getWidgets());
+      feed.addAll(fs.getWidgets(limit));
     }
     Collections.sort(feed);
     Collections.reverse(feed);
@@ -58,7 +58,7 @@ public class WidgetResource {
     }
 
     @SuppressWarnings("unchecked")
-    List<Widget> feed = feedService.getWidgets();
+    List<Widget> feed = feedService.getWidgets(10);
 
     Collections.sort(feed);
     Collections.reverse(feed);

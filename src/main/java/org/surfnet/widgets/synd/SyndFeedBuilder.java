@@ -43,8 +43,10 @@ public class SyndFeedBuilder {
     while (i < limit && i < widgets.size()) {
       Widget w = widgets.get(i++);
       SyndEntry entry = new SyndEntryImpl();
-      entry.setLink(w.getUri().toString());
-      entry.setUri(w.getUri().toString());
+      if (w.getUri() != null) {
+        entry.setLink(w.getUri().toString());
+        entry.setUri(w.getUri().toString());
+      }
       entry.setTitle(w.getName());
       final SyndContentImpl syndContent = new SyndContentImpl();
       syndContent.setValue(w.getDescription());
