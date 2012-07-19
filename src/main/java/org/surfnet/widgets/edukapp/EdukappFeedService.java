@@ -16,7 +16,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.surfnet.widgets.repo.FeedService;
+import org.surfnet.widgets.service.FeedService;
 
 public class EdukappFeedService implements FeedService {
 

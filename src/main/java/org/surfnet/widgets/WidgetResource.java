@@ -17,7 +17,7 @@ import com.sun.jersey.api.NotFoundException;
 import com.sun.syndication.feed.synd.SyndFeed;
 
 import org.surfnet.widgets.model.Widget;
-import org.surfnet.widgets.repo.FeedService;
+import org.surfnet.widgets.service.FeedService;
 import org.surfnet.widgets.synd.SyndFeedBuilder;
 
 @Path("/widgets")

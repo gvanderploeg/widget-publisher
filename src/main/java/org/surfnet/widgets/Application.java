@@ -9,7 +9,7 @@ import com.yammer.dropwizard.config.Environment;
 import org.surfnet.widgets.config.ApplicationConfiguration;
 import org.surfnet.widgets.config.FeedConfiguration;
 import org.surfnet.widgets.edukapp.EdukappFeedService;
-import org.surfnet.widgets.repo.FeedService;
+import org.surfnet.widgets.service.FeedService;
 import org.surfnet.widgets.synd.SyndFeedMessageBodyWriter;
 
 public class Application extends Service<ApplicationConfiguration> {

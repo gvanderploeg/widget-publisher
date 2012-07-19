@@ -1,4 +1,4 @@
-package org.surfnet.widgets.repo;
+package org.surfnet.widgets.service;
 
 import java.util.List;
 

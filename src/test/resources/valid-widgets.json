@@ -1,0 +1,19 @@
+{
+  "widgets": [{
+    "name":"the name",
+    "description":"my description",
+    "uri":"http://www.example.com/uri",
+    "id":1,
+    "icon":"http://example.com/icon",
+    "updated": "2012-01-01T00:00:00.000+0000",
+    "created": "2012-01-01T00:00:00.000+0000"
+  },{
+    "name":"the name 2",
+    "description":"my description 2",
+    "uri":"http://www.example.com/uri2",
+    "id":2,
+    "icon":"http://example.com/icon2",
+    "updated": "2012-01-01T00:00:00.000+0000",
+    "created": "2012-01-01T00:00:00.000+0000"
+  }]
+}

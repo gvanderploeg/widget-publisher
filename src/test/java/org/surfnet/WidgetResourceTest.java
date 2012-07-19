@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.surfnet.widgets.WidgetResource;
 import org.surfnet.widgets.model.Widget;
-import org.surfnet.widgets.repo.FeedService;
+import org.surfnet.widgets.service.FeedService;
 import org.surfnet.widgets.synd.SyndFeedMessageBodyWriter;
 
 import static org.junit.Assert.assertTrue;
