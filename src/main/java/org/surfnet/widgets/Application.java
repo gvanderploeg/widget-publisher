@@ -9,6 +9,7 @@ import com.yammer.dropwizard.config.Environment;
 import org.surfnet.widgets.config.ApplicationConfiguration;
 import org.surfnet.widgets.config.FeedConfiguration;
 import org.surfnet.widgets.edukapp.EdukappFeedService;
+import org.surfnet.widgets.health.FeedServiceHealthCheck;
 import org.surfnet.widgets.service.FeedService;
 import org.surfnet.widgets.synd.SyndFeedMessageBodyWriter;
 
@@ -39,7 +40,10 @@ public class Application extends Service<ApplicationConfiguration> {
   protected void initialize(ApplicationConfiguration configuration, Environment environment) throws Exception {
     final Map<String, FeedService> services = configureFeedServices(configuration);
     environment.addResource(new WidgetResource(services));
-
+    for (String svcName : services.keySet()) {
+      FeedService service = services.get(svcName);
+      environment.addHealthCheck(new FeedServiceHealthCheck("health of " + svcName).feedService(service));
+    }
     environment.addProvider(new SyndFeedMessageBodyWriter());
   }
 }
