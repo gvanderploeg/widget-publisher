@@ -11,6 +11,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.surfnet.widgets.synd.JsonDateSerializer;
 
 @XmlRootElement
@@ -40,6 +41,13 @@ public class Widget implements Comparable<Widget> {
   @JsonSerialize(using=JsonDateSerializer.class)
   private Date created;
 
+  @JsonProperty
+  @JsonSerialize(include = Inclusion.NON_NULL)
+  private String license;
+  
+  @JsonProperty
+  @JsonSerialize(include = Inclusion.NON_NULL)
+  private String author;
 
   public String getName() {
     return name;
@@ -67,6 +75,14 @@ public class Widget implements Comparable<Widget> {
 
   public Date getCreated() {
     return created;
+  }
+  
+  public String getLicense() {
+    return license;
+  }
+  
+  public String getAuthor() {
+    return author;
   }
 
   @Override
@@ -118,6 +134,14 @@ public class Widget implements Comparable<Widget> {
   public void setCreated(Date created) {
     this.created = created;
   }
+  
+  public void setLicense(String license){
+    this.license = license;
+  }
+  
+  public void setAuthor(String author){
+    this.author = author;
+  }
 
   @Override
   public boolean equals(Object obj) {
@@ -134,6 +158,7 @@ public class Widget implements Comparable<Widget> {
         .append(this.uri, rhs.uri)
         .append(this.icon, rhs.icon)
         .append(this.name, rhs.name)
+        .append(this.license, rhs.license)
         .append(this.description, rhs.description)
         .isEquals();
   }
@@ -146,6 +171,7 @@ public class Widget implements Comparable<Widget> {
         .append(icon)
         .append(name)
         .append(description)
+        .append(license)
         .toHashCode();
   }
 
