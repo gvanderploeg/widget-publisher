@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.sun.syndication.feed.module.DCModule;
 import com.sun.syndication.feed.synd.SyndContentImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
@@ -53,6 +54,15 @@ public class SyndFeedBuilder {
       entry.setDescription(syndContent);
       entry.setUpdatedDate(w.getUpdated());
       entry.setPublishedDate(w.getCreated());
+      entry.setAuthor(w.getAuthor());
+
+      /*
+       Here we use the DC module to set a Rights element.
+       However, Atom 1.0 also specifies a native Rights element.
+       We should probably use Rome's pluginManager to support this.
+      */
+      DCModule dcModule = (DCModule) entry.getModule(DCModule.URI);
+      dcModule.setRights(w.getLicense());
       entries.add(entry);
     }
     syndFeed.setEntries(entries);
