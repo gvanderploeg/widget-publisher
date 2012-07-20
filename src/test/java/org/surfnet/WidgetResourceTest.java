@@ -3,6 +3,7 @@ package org.surfnet;
 import java.net.URI;
 import java.util.Collections;
 
+import com.sun.jersey.api.client.UniformInterfaceException;
 import com.yammer.dropwizard.testing.ResourceTest;
 
 import org.junit.Test;
@@ -32,19 +33,33 @@ public class WidgetResourceTest extends ResourceTest {
   }
 
   @Test
-  public void simpleResourceTest() throws Exception {
+  public void getAllWidgets() throws Exception {
     Widget w = new Widget();
     w.setDescription("my description");
     w.setIcon("http://example.com/icon");
     w.setId(100L);
     w.setName("The name");
     w.setUri(URI.create("http://foo.example.com/uri"));
-
+    w.setAuthor("The Author");
+    w.setLicense("My own, proprietary license");
     when(fs.getWidgets(anyInt())).thenReturn(Collections.singletonList(w));
 
     String atom = client().resource("/widgets").get(String.class);
     LOG.debug("atom: {}", atom);
 
     assertTrue(atom.contains("my description"));
+    assertTrue(atom.contains("The Author"));
+    assertTrue(atom.contains("My own, proprietary license"));
+  }
+
+  @Test(expected = UniformInterfaceException.class)
+  public void nonExisting() throws Exception {
+    String atom = client().resource("/widgets/non-existing").get(String.class);
+  }
+  
+  @Test
+  public void specificResource() {
+    String atom = client().resource("/widgets/mocky").get(String.class);
+    assertTrue(atom.contains("<dc:creator>mocky</dc:creator>"));
   }
 }
